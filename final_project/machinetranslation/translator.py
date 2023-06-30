@@ -2,22 +2,17 @@
 Creates a Language Translator Service between French and English.
 """
 
-import os
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-from dotenv import load_dotenv
 
-load_dotenv()
-
-apikey = os.environ['apikey']
-url = os.environ['url']
-
+# Set up the IBM Watson Language Translator
+apikey = 'CMofiYDqSHgiqAnaq9TlxZa8QbtVyxo6UI_CdzH7FOE6'
+url = 'https://api.au-syd.language-translator.watson.cloud.ibm.com/instances/5f3bf555-c040-4d6b-9e7b-11274703f0f7'
 authenticator = IAMAuthenticator(apikey)
 language_translator = LanguageTranslatorV3(
-    version='2022-07-18',
+    version='2021-09-01',
     authenticator=authenticator
 )
-
 language_translator.set_service_url(url)
 
 def english_to_french(english_text):
